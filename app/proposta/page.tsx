@@ -3,125 +3,35 @@
 import { useState } from 'react';
 import Link from 'next/link';
 
-const includedItems = [
-  'Atendimento remoto e presencial conforme o plano contratado',
-  'Manutenção preventiva e corretiva dos computadores existentes',
-  'Verificação de rede, Wi-Fi e conectividade',
-  'Acompanhamento dos servidores já existentes',
-  'Verificação e suporte do sistema de câmeras instalado',
-  'Orientações de segurança, backup e organização tecnológica',
-];
+const siteItems = ['Design premium alinhado à marca', 'Experiência responsiva em celular e computador', 'Arquitetura moderna e otimizada', 'Organização dos serviços e informações comerciais', 'Publicação, ajustes e validação da entrega'];
+const supportItems = ['Computadores e periféricos existentes', 'Rede, Wi-Fi e conectividade', 'Servidores e rotinas de backup', 'Câmeras e infraestrutura já instalada', 'Atendimento remoto e presencial conforme plano'];
+const extraItems = ['Novos computadores, servidores ou câmeras', 'Passagem de cabos e novos pontos de rede', 'Expansões de CFTV, Wi-Fi, alarmes ou acesso', 'Peças, licenças, softwares e serviços de terceiros'];
 
-const separateQuoteItems = [
-  'Compra ou substituição de computadores, servidores e câmeras',
-  'Instalação de novos pontos de rede ou passagem de cabos',
-  'Expansão de CFTV, alarmes, controle de acesso ou Wi-Fi',
-  'Mudanças estruturais, obras, infraestrutura elétrica ou lógica',
-  'Licenças, softwares, serviços de terceiros e equipamentos',
-  'Projetos novos, ampliações e implementações não previstas no escopo',
-];
+function CheckList({ items }: { items: string[] }) {
+  return <ul className="mt-6 space-y-3 text-sm leading-6 text-white/75">{items.map((item) => <li key={item} className="flex gap-3"><span className="mt-1 text-[#FFDE00]">✦</span><span>{item}</span></li>)}</ul>;
+}
 
 export default function ProposalPage() {
-  const [showDetails, setShowDetails] = useState(false);
-
+  const [details, setDetails] = useState(false);
   return (
-    <main className="min-h-screen bg-[#07090d] text-white selection:bg-lime-300 selection:text-black">
-      <section className="relative overflow-hidden border-b border-white/10">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(163,230,53,0.18),transparent_35%),radial-gradient(circle_at_bottom_left,rgba(59,130,246,0.14),transparent_30%)]" />
-        <div className="relative mx-auto max-w-6xl px-6 py-8 lg:px-10 lg:py-12">
-          <div className="flex items-center justify-between gap-4">
-            <span className="text-sm font-semibold tracking-[0.25em] text-lime-300">ROOTED × ECCO CLEANER</span>
-            <Link href="/apresentacao" className="rounded-full border border-white/20 px-4 py-2 text-xs font-semibold transition hover:border-lime-300 hover:text-lime-300">
-              Ver apresentação completa
-            </Link>
-          </div>
+    <main className="min-h-screen overflow-hidden bg-[#050505] text-white selection:bg-[#FFDE00] selection:text-black">
+      <div className="pointer-events-none fixed inset-0 opacity-60 [background-image:linear-gradient(rgba(255,255,255,.035)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.035)_1px,transparent_1px)] [background-size:64px_64px]" />
+      <header className="relative z-10 mx-auto flex max-w-7xl items-center justify-between px-6 py-6 lg:px-10">
+        <div className="flex items-center gap-3"><img src="/img/4.png" alt="Rooted" className="h-10 w-10 object-contain" /><div><p className="text-xs font-black tracking-[.28em] text-[#FFDE00]">ROOTED</p><p className="text-[10px] uppercase tracking-[.2em] text-white/40">Tecnologia & estratégia</p></div></div>
+        <Link href="/apresentacao" className="rounded-full border border-white/15 px-4 py-2 text-xs font-bold transition hover:border-[#FFDE00] hover:text-[#FFDE00]">Apresentação completa ↗</Link>
+      </header>
 
-          <div className="max-w-4xl pb-16 pt-24 lg:pb-24 lg:pt-32">
-            <p className="mb-5 text-sm font-medium uppercase tracking-[0.22em] text-white/50">Proposta de parceria tecnológica</p>
-            <h1 className="text-4xl font-semibold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
-              Tecnologia organizada para a operação da <span className="text-lime-300">Ecco Cleaner.</span>
-            </h1>
-            <p className="mt-7 max-w-2xl text-base leading-7 text-white/65 sm:text-lg">
-              Uma proposta objetiva, concentrada no desenvolvimento do novo site e no suporte dos recursos de TI que a empresa já possui.
-            </p>
-            <div className="mt-9 flex flex-wrap gap-3 text-sm">
-              <a href="#escopo" className="rounded-full bg-lime-300 px-6 py-3 font-bold text-black transition hover:bg-lime-200">Conhecer o escopo</a>
-              <a href="#transparencia" className="rounded-full border border-white/20 px-6 py-3 font-semibold transition hover:border-white/50">Ver regras de atendimento</a>
-            </div>
-          </div>
-        </div>
+      <section className="relative z-10 mx-auto grid min-h-[720px] max-w-7xl items-center gap-8 px-6 py-16 lg:grid-cols-[1.05fr_.95fr] lg:px-10 lg:py-20">
+        <div className="relative z-20"><div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#FFDE00]/30 bg-[#FFDE00]/10 px-4 py-2 text-[10px] font-black uppercase tracking-[.2em] text-[#FFDE00]"><span className="h-2 w-2 animate-pulse rounded-full bg-[#FFDE00]" /> Proposta exclusiva • Ecco Cleaner</div><h1 className="max-w-3xl font-[var(--font-poppins)] text-5xl font-extrabold leading-[.98] tracking-[-.06em] sm:text-7xl">Uma nova presença digital.<br /><span className="text-[#FFDE00]">Uma operação mais preparada.</span></h1><p className="mt-8 max-w-xl text-base leading-8 text-white/55 sm:text-lg">Uma parceria tecnológica construída para começar pelo novo site da Ecco Cleaner e pelo suporte organizado da estrutura de TI existente.</p><div className="mt-10 flex flex-wrap gap-3"><a href="#escopo" className="rounded-full bg-[#FFDE00] px-6 py-3 text-sm font-black text-black shadow-[0_0_35px_rgba(255,222,0,.2)] transition hover:scale-[1.03]">Conhecer a proposta ↓</a><a href="#transparencia" className="rounded-full border border-white/20 px-6 py-3 text-sm font-bold text-white transition hover:border-white/50">Como funciona</a></div><div className="mt-12 flex gap-8 border-t border-white/10 pt-6 text-xs text-white/40"><span><b className="block text-2xl text-white">01</b>Projeto inicial</span><span><b className="block text-2xl text-white">02</b>Suporte contínuo</span><span><b className="block text-2xl text-white">03</b>Expansões à parte</span></div></div>
+        <div className="relative flex min-h-[420px] items-end justify-center lg:min-h-[620px]"><div className="absolute h-72 w-72 rounded-full bg-[#FFDE00]/15 blur-[110px]" /><div className="absolute bottom-10 h-72 w-72 rounded-full border border-[#FFDE00]/20 shadow-[0_0_100px_rgba(255,222,0,.12)]" /><img src="/img/slide-1.png" alt="Mascote Rooted" className="relative z-10 max-h-[610px] w-full object-contain drop-shadow-[0_30px_50px_rgba(0,0,0,.8)] [mask-image:linear-gradient(to_bottom,black_85%,transparent)]" /><div className="absolute bottom-12 left-1/2 z-20 -translate-x-1/2 whitespace-nowrap rounded-full border border-white/15 bg-black/70 px-4 py-2 text-[10px] font-bold uppercase tracking-[.2em] text-white/60 backdrop-blur-xl">Rooted × Ecco Cleaner</div></div>
       </section>
 
-      <section id="escopo" className="mx-auto grid max-w-6xl gap-5 px-6 py-16 lg:grid-cols-2 lg:px-10 lg:py-24">
-        <article className="rounded-3xl border border-white/10 bg-white/[0.04] p-7 lg:p-9">
-          <div className="mb-8 flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-400/15 text-xl text-blue-300">01</div>
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/45">Projeto inicial</p>
-          <h2 className="mt-3 text-3xl font-semibold tracking-tight">Desenvolvimento do site</h2>
-          <p className="mt-4 leading-7 text-white/65">Criação do portal digital da Ecco Cleaner, com uma experiência moderna, responsiva e alinhada à apresentação demonstrada.</p>
-          <ul className="mt-7 space-y-3 text-sm leading-6 text-white/80">
-            <li>✓ Estrutura e layout profissional</li>
-            <li>✓ Adaptação para celular, tablet e computador</li>
-            <li>✓ Organização das páginas e informações comerciais</li>
-            <li>✓ Implementação das funcionalidades definidas no escopo</li>
-            <li>✓ Publicação e validação da versão entregue</li>
-          </ul>
-        </article>
+      <section id="escopo" className="relative z-10 mx-auto max-w-7xl px-6 py-20 lg:px-10"><div className="mb-12 max-w-2xl"><p className="text-xs font-black uppercase tracking-[.25em] text-[#FFDE00]">Escopo da parceria</p><h2 className="mt-4 text-4xl font-extrabold tracking-[-.04em] sm:text-5xl">Dois pilares. Uma direção clara.</h2><p className="mt-5 leading-7 text-white/50">O início da parceria é dividido entre a construção do site e o cuidado com os recursos de TI que a empresa já possui.</p></div><div className="grid gap-5 lg:grid-cols-2"><article className="group relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[.045] p-8 transition hover:-translate-y-1 hover:border-[#FFDE00]/40 lg:p-10"><div className="absolute right-0 top-0 h-48 w-48 rounded-full bg-blue-500/10 blur-3xl" /><div className="relative"><div className="flex items-center justify-between"><span className="rounded-xl bg-white/10 px-3 py-2 text-xs font-black text-white/60">01 / DIGITAL</span><span className="text-3xl text-white/20">↗</span></div><h3 className="mt-10 text-3xl font-extrabold tracking-tight">Desenvolvimento<br />do site</h3><p className="mt-5 max-w-md leading-7 text-white/55">Um portal profissional, responsivo e preparado para apresentar a Ecco Cleaner com mais clareza, credibilidade e presença digital.</p><CheckList items={siteItems} /></div></article><article className="group relative overflow-hidden rounded-[2rem] border border-[#FFDE00]/25 bg-[#FFDE00]/[.06] p-8 transition hover:-translate-y-1 hover:border-[#FFDE00]/60 lg:p-10"><div className="absolute right-0 top-0 h-48 w-48 rounded-full bg-[#FFDE00]/10 blur-3xl" /><div className="relative"><div className="flex items-center justify-between"><span className="rounded-xl bg-[#FFDE00]/15 px-3 py-2 text-xs font-black text-[#FFDE00]">02 / OPERAÇÃO</span><span className="text-3xl text-[#FFDE00]/40">⌁</span></div><h3 className="mt-10 text-3xl font-extrabold tracking-tight">Suporte<br />de TI</h3><p className="mt-5 max-w-md leading-7 text-white/55">Acompanhamento técnico dos equipamentos, conectividade e infraestrutura já instalada, conforme o plano contratado.</p><CheckList items={supportItems} /></div></article></div></section>
 
-        <article className="rounded-3xl border border-lime-300/25 bg-lime-300/[0.06] p-7 lg:p-9">
-          <div className="mb-8 flex h-12 w-12 items-center justify-center rounded-2xl bg-lime-300/15 text-xl text-lime-300">02</div>
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/45">Serviço recorrente</p>
-          <h2 className="mt-3 text-3xl font-semibold tracking-tight">Suporte de TI</h2>
-          <p className="mt-4 leading-7 text-white/65">Acompanhamento técnico dos equipamentos e da infraestrutura que já estão instalados e em uso na empresa.</p>
-          <ul className="mt-7 space-y-3 text-sm leading-6 text-white/80">
-            {includedItems.map((item) => <li key={item}>✓ {item}</li>)}
-          </ul>
-        </article>
-      </section>
+      <section id="transparencia" className="relative z-10 border-y border-white/10 bg-white/[.025]"><div className="mx-auto max-w-7xl px-6 py-20 lg:px-10"><div className="grid gap-12 lg:grid-cols-[.8fr_1.2fr] lg:items-start"><div><p className="text-xs font-black uppercase tracking-[.25em] text-[#FFDE00]">Transparência</p><h2 className="mt-4 text-4xl font-extrabold tracking-[-.04em] sm:text-5xl">O que existe hoje.<br /><span className="text-white/40">O que será ampliado amanhã.</span></h2><p className="mt-6 leading-7 text-white/50">O plano contempla o inventário e as condições definidos na contratação. Qualquer expansão será apresentada para aprovação antes da execução.</p></div><div className="grid gap-4 sm:grid-cols-2"><div className="rounded-3xl border border-emerald-300/20 bg-emerald-300/[.05] p-7"><span className="text-2xl text-emerald-300">✓</span><h3 className="mt-5 text-xl font-extrabold">Incluído</h3><p className="mt-3 text-sm leading-6 text-white/55">Suporte aos computadores, câmeras, servidores, rede e demais recursos existentes dentro do escopo aprovado.</p></div><div className="rounded-3xl border border-amber-300/20 bg-amber-300/[.05] p-7"><span className="text-2xl text-amber-300">＋</span><h3 className="mt-5 text-xl font-extrabold">Orçamento à parte</h3><p className="mt-3 text-sm leading-6 text-white/55">Novos equipamentos, cabeamento, pontos de rede, expansões, peças, licenças e implementações.</p></div></div></div><div className="mt-10 rounded-3xl border border-white/10 bg-black/30 p-6"><button type="button" onClick={() => setDetails(!details)} className="flex w-full items-center justify-between text-left text-sm font-bold"><span>Exemplo de aplicação da regra</span><span className="text-[#FFDE00]">{details ? '−' : '+'}</span></button>{details && <p className="mt-4 max-w-3xl text-sm leading-7 text-white/55">Se o inventário aprovado registrar 10 computadores, 12 câmeras e 1 servidor, o suporte considera esses recursos. A instalação de um novo computador, câmera, servidor ou cabo será analisada e orçada separadamente.</p>}</div></div></section>
 
-      <section id="transparencia" className="border-y border-white/10 bg-white/[0.025]">
-        <div className="mx-auto max-w-6xl px-6 py-16 lg:px-10 lg:py-24">
-          <div className="max-w-3xl">
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-lime-300">Transparência comercial</p>
-            <h2 className="mt-4 text-3xl font-semibold tracking-tight sm:text-5xl">O plano acompanha o que existe hoje. Expansões são orçadas à parte.</h2>
-            <p className="mt-6 leading-7 text-white/65">O suporte considera o inventário e o escopo acordados na contratação. Quando houver necessidade de ampliar, instalar ou adquirir novos recursos, será elaborado um orçamento separado para aprovação.</p>
-          </div>
-
-          <div className="mt-12 grid gap-5 lg:grid-cols-2">
-            <div className="rounded-3xl border border-emerald-300/20 bg-emerald-300/[0.06] p-7">
-              <h3 className="text-xl font-semibold text-emerald-300">Incluído no plano</h3>
-              <p className="mt-2 text-sm text-white/55">Equipamentos e atividades previamente definidos.</p>
-              <p className="mt-5 text-sm leading-7 text-white/75">Computadores, câmeras, servidores, rede e demais recursos existentes, respeitando as quantidades e condições registradas no inventário inicial.</p>
-            </div>
-            <div className="rounded-3xl border border-amber-300/20 bg-amber-300/[0.05] p-7">
-              <h3 className="text-xl font-semibold text-amber-300">Orçamento separado</h3>
-              <p className="mt-2 text-sm text-white/55">Novas aquisições, ampliações e implementações.</p>
-              <ul className="mt-5 space-y-3 text-sm leading-6 text-white/75">
-                {separateQuoteItems.map((item) => <li key={item}>• {item}</li>)}
-              </ul>
-            </div>
-          </div>
-
-          <button type="button" onClick={() => setShowDetails((current) => !current)} className="mt-8 rounded-full border border-white/20 px-5 py-3 text-sm font-semibold transition hover:border-lime-300 hover:text-lime-300">
-            {showDetails ? 'Ocultar exemplo de regra' : 'Ver exemplo de regra contratual'}
-          </button>
-          {showDetails && (
-            <div className="mt-4 max-w-3xl rounded-2xl border border-white/10 bg-black/20 p-6 text-sm leading-7 text-white/70">
-              Exemplo: se a empresa possuir 10 computadores, 12 câmeras e 1 servidor no inventário aprovado, o plano contempla o suporte desses recursos dentro das condições contratadas. A instalação de um novo computador, câmera, servidor ou cabo será avaliada e apresentada em orçamento separado, antes da execução.
-            </div>
-          )}
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-6xl px-6 py-16 lg:px-10 lg:py-24">
-        <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.08] to-white/[0.02] p-8 lg:p-12">
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/45">Próxima etapa</p>
-          <h2 className="mt-4 max-w-2xl text-3xl font-semibold tracking-tight sm:text-4xl">Definir o inventário, o escopo e os valores finais.</h2>
-          <p className="mt-5 max-w-2xl leading-7 text-white/60">Antes da aprovação, as quantidades de equipamentos, os horários de atendimento, os limites do suporte e os serviços cobrados separadamente devem ser registrados na proposta comercial.</p>
-          <Link href="/apresentacao" className="mt-8 inline-flex rounded-full bg-lime-300 px-6 py-3 text-sm font-bold text-black transition hover:bg-lime-200">Voltar para a apresentação</Link>
-        </div>
-      </section>
-
-      <footer className="border-t border-white/10 px-6 py-8 text-center text-xs text-white/35">Rooted Tecnologia • Proposta de parceria com a Ecco Cleaner</footer>
+      <section className="relative z-10 mx-auto max-w-7xl px-6 py-20 lg:px-10"><div className="relative overflow-hidden rounded-[2rem] border border-[#FFDE00]/20 bg-gradient-to-br from-[#FFDE00]/10 via-white/[.04] to-transparent p-8 lg:p-14"><div className="absolute -right-20 -top-20 h-72 w-72 rounded-full bg-[#FFDE00]/10 blur-3xl" /><p className="relative text-xs font-black uppercase tracking-[.25em] text-[#FFDE00]">Próximo passo</p><h2 className="relative mt-5 max-w-3xl text-4xl font-extrabold tracking-[-.04em] sm:text-5xl">Alinhar o escopo, validar o inventário e definir os valores finais.</h2><p className="relative mt-6 max-w-2xl leading-7 text-white/50">Uma proposta clara começa com limites bem definidos, entregas organizadas e aprovação prévia para qualquer nova implementação.</p><Link href="/apresentacao" className="relative mt-9 inline-flex rounded-full bg-[#FFDE00] px-6 py-3 text-sm font-black text-black transition hover:scale-[1.03]">Voltar à apresentação ↗</Link></div></section>
+      <footer className="relative z-10 border-t border-white/10 px-6 py-8 text-center text-[10px] font-bold uppercase tracking-[.2em] text-white/30">Rooted Tecnologia • Proposta comercial Ecco Cleaner</footer>
     </main>
   );
 }

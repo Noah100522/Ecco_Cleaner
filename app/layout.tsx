@@ -2,6 +2,7 @@ import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Poppins, Inter } from 'next/font/google'
 import './globals.css'
+import ProposalPromo from './ProposalPromo'
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -46,6 +47,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className={`light bg-background ${poppins.variable} ${inter.variable}`} suppressHydrationWarning>
       <body className="font-sans antialiased" suppressHydrationWarning>
+        <ProposalPromo />
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>

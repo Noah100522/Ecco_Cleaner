@@ -1,11 +1,24 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
 
 export default function ProposalPromo() {
   const pathname = usePathname()
+  const [active, setActive] = useState(false)
 
-  if (pathname !== '/proposta') return null
+  useEffect(() => {
+    const todayInBrazil = new Intl.DateTimeFormat('pt-BR', {
+      timeZone: 'America/Sao_Paulo',
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+    }).format(new Date())
+
+    setActive(pathname === '/proposta' && todayInBrazil === '21/09/2026')
+  }, [pathname])
+
+  if (!active) return null
 
   return (
     <section className="relative z-[60] border-b-2 border-black bg-[#FFDE00] px-5 py-4 text-black shadow-[0_8px_30px_rgba(255,222,0,.18)] sm:px-8">
